@@ -1,6 +1,6 @@
 export default function Article({ column = "1 / 1" }) {
   return (
-    <article>
+    <article onClick={() => console.log(column)}>
       <style jsx>{`
         article {
           grid-column: ${column};
