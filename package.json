@@ -1,0 +1,18 @@
+{
+  "name": "bscmp-evaluation-next-suspense",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:spring-media/bscmp-evaluation-next-suspense.git",
+  "author": "Lukas Bombach <lukas.bombach@googlemail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "8.0.4",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
+  }
+}
