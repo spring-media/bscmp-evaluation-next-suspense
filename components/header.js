@@ -14,10 +14,10 @@ export default function Header() {
           padding: 10px;
         }
       `}</style>
-      <HeroArticle column="1 / 4" />
-      <Article column="1 / 1" />
-      <Article column="2 / 2" />
-      <Article column="3 / 3" />
+      <HeroArticle span="1 / 4" />
+      <Article column={1} />
+      <Article column={2} />
+      <Article column={3} />
     </header>
   );
 }

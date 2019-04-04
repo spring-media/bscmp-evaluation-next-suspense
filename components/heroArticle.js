@@ -1,9 +1,9 @@
-export default function HeroArticle({ column = "1 / 1" }) {
+export default function HeroArticle({ span = "1 / 1" }) {
   return (
     <article>
       <style jsx>{`
         article {
-          grid-column: ${column};
+          grid-column: ${span};
           display: grid;
           grid-gap: 2%;
           grid-template-columns: 32% 32% 32%;

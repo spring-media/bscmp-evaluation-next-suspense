@@ -3,7 +3,7 @@ export default function Article({ column = "1 / 1" }) {
     <article onClick={() => console.log(column)}>
       <style jsx>{`
         article {
-          grid-column: ${column};
+          grid-column: ${column} / ${column};
         }
       `}</style>
       <h1>Fermentum Amet Aenean</h1>
