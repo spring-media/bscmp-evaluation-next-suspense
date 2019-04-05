@@ -11,7 +11,6 @@ export default function Home() {
           margin: 0 auto;
         }
       `}</style>
-
       <Header />
       <Body />
     </section>
