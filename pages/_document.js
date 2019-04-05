@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Main, NextScript } from "next/document";
 import PerformanceScript from "../packages/super-performace";
 
 export default class MyDocument extends Document {
@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <PerformanceScript />
-          {/* <OriginalNextScript /> */}
+          {/* <NextScript /> */}
         </body>
       </Html>
     );
