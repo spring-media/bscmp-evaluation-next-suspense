@@ -14,8 +14,7 @@ export default class NextScript extends React.Component {
   }
 
   appendStyles() {
-    const { styles } = this.context._documentProps;
-    return styles.map(({ key, props }) => (
+    return this.context._documentProps.styles.map(({ key, props }) => (
       <style
         key={key}
         dangerouslySetInnerHTML={props.dangerouslySetInnerHTML}
