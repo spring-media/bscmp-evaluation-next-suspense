@@ -1,7 +1,10 @@
 import { Lead } from "../packages/super-intendent";
 import Header from "../components/header";
+import dynamic from "next/dynamic";
 import Body from "../components/body";
-import loadRuntime from "../packages/super-intendent/loadRuntime";
+const LoadHydrationRuntime = dynamic(() =>
+  import("../packages/super-intendent/loadRuntime")
+);
 
 export default function Home() {
   return (
@@ -17,12 +20,7 @@ export default function Home() {
         <Header heroSpan="1 / 4" />
       </Lead>
       <Body />
+      <LoadHydrationRuntime />
     </section>
   );
 }
-
-Home.getInitialProps = async function() {
-  await loadRuntime();
-  const asd = "asd";
-  return { asd };
-};

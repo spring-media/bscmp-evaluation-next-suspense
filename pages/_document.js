@@ -12,8 +12,8 @@ export default class MyDocument extends Document {
       <Html>
         <body>
           <Main />
-          {/* <PerformanceScript /> */}
-          <NextScript />
+          <PerformanceScript />
+          {/* <NextScript /> */}
         </body>
       </Html>
     );

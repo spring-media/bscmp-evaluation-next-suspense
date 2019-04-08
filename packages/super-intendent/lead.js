@@ -21,11 +21,11 @@ export default class Lead extends Component {
   render() {
     return (
       <>
+        {this.props.children}
         <script
           type="application/lead-hydration-marker"
           dangerouslySetInnerHTML={{ __html: this.getHydrationScript() }}
         />
-        {this.props.children}
       </>
     );
   }

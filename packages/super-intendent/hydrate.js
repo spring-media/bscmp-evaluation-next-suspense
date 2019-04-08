@@ -34,8 +34,8 @@ export default class Hydrate extends Component {
     Hydrate.storeData(this.state.id, this.getHydrationData());
     return (
       <>
-        <script type="application/hydration-marker" id={this.state.id} />
         {this.props.children}
+        <script type="application/hydration-marker" id={this.state.id} />
       </>
     );
   }

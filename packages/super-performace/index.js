@@ -19,17 +19,45 @@ export default class PerformanceScript extends Component {
     ));
   }
 
-  appendDev() {
-    return this.context._documentProps.devFiles.map((src, index) => (
-      <script key={index} src={src} />
-    ));
+  getScripts(files) {
+    const { assetPrefix } = this.context._documentProps;
+    if (!files || files.length === 0) {
+      return null;
+    }
+    const { _devOnlyInvalidateCacheQueryString } = this.context;
+
+    return files.map(file => {
+      // Only render .js files here
+      if (!/\.js$/.exec(file)) {
+        return null;
+      }
+
+      return (
+        <script
+          key={file}
+          src={`${assetPrefix}/_next/${file}${_devOnlyInvalidateCacheQueryString}`}
+          nonce={this.props.nonce}
+          async
+          crossOrigin={this.props.crossOrigin || process.crossOrigin}
+        />
+      );
+    });
+  }
+
+  getPerformanceScripts() {
+    return ["static/runtime/webpack.js", "static/runtime/client.js"];
   }
 
   render() {
     return (
       <>
         {this.appendStyles()}
-        {/* this.appendDev() */}
+        {/* this.getScripts(this.context._documentProps.files) */}
+        {this.getScripts([
+          "static/runtime/webpack.js",
+          "static/runtime/client.js"
+        ])}
+
         {hydrationScripts({ clear: true })}
       </>
     );

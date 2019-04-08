@@ -1,5 +1,4 @@
-export default async function loadRuntime() {
-  console.log("loadRuntime");
-
-  await import("./runtime");
+export default function loadRuntime() {
+  import("./runtime");
+  return null;
 }
