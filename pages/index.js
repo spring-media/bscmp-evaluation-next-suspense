@@ -1,8 +1,6 @@
-import { asLead } from "../packages/super-intendent";
+import { Lead } from "../packages/super-intendent";
 import Header from "../components/header";
 import Body from "../components/body";
-
-const Lead = asLead(Header);
 
 export default function Home() {
   return (
@@ -14,7 +12,9 @@ export default function Home() {
           margin: 0 auto;
         }
       `}</style>
-      <Lead heroSpan="1 / 4" />
+      <Lead>
+        <Header heroSpan="1 / 4" />
+      </Lead>
       <Body />
     </section>
   );

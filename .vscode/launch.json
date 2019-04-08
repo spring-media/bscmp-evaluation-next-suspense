@@ -7,8 +7,8 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Next: Node",
-      "runtimeExecutable": "./node_modules/next/dist/bin/next",
+      "name": "Next: Dev",
+      "runtimeExecutable": "../node_modules/next/dist/bin/next",
       "runtimeArgs": ["dev"],
       "env": { "NODE_OPTIONS": "--inspect" },
       "console": "integratedTerminal",

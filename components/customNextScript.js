@@ -11,7 +11,7 @@ export default class CustomNextScript extends React.Component {
 
   render() {
     //console.log(util.inspect(this.context, { depth: 100 }));
-    console.log(JSON.stringify(this.context, null, 2));
+    // console.log(JSON.stringify(this.context, null, 2));
     return (
       <DocumentProxyContext.Provider value={this.context}>
         {this.props.children}

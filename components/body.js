@@ -1,4 +1,5 @@
 import Article from "./article";
+import { Hydrate } from "../packages/super-intendent";
 
 export default function Header() {
   return (
@@ -12,9 +13,11 @@ export default function Header() {
           padding: 10px;
         }
       `}</style>
-      <Article column={1} />
-      <Article column={2} />
-      <Article column={3} />
+      <Hydrate>
+        <Article column={1} />
+        <Article column={2} />
+        <Article column={3} />
+      </Hydrate>
 
       <Article column={1} />
       <Article column={2} />
