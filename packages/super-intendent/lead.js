@@ -1,24 +1,28 @@
 import React, { Component } from "react";
 
 export default class Lead extends Component {
+  getHydrationScript() {
+    return JSON.stringify(this.getHydrationData());
+  }
+
   getHydrationData() {
     const children = Array.isArray(this.props.children)
       ? this.props.children
       : [this.props.children];
-    const numElements = children.length;
-    const props = children.map(child => child.props);
-    return { numElements, props };
+    return children.map(child => this.getDataFromChild(child));
   }
 
-  getHydrationScript() {
-    return JSON.stringify(this.getHydrationData());
+  getDataFromChild(child) {
+    const name = child.type.displayName || child.type.name;
+    const props = child.props;
+    return { name, props };
   }
 
   render() {
     return (
       <>
         <script
-          type="application/hydration-marker"
+          type="application/lead-hydration-marker"
           dangerouslySetInnerHTML={{ __html: this.getHydrationScript() }}
         />
         {this.props.children}

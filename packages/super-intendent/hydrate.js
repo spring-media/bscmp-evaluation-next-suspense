@@ -18,9 +18,16 @@ export default class Hydrate extends Component {
   }
 
   getHydrationData() {
-    const numElements = this.props.children.length;
-    const props = this.props.children.map(child => child.props);
-    return { numElements, props };
+    const children = Array.isArray(this.props.children)
+      ? this.props.children
+      : [this.props.children];
+    return children.map(child => this.getDataFromChild(child));
+  }
+
+  getDataFromChild(child) {
+    const name = child.type.displayName || child.type.name;
+    const props = child.props;
+    return { name, props };
   }
 
   render() {
