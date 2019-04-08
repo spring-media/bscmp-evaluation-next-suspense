@@ -1,6 +1,6 @@
-import { Hydrate } from "../super-intendent";
+import { Hydrate } from ".";
 
-export default function hydrationDataScript({ clear = false }) {
+export default function hydrationData({ clear = false }) {
   const __html = JSON.stringify(Hydrate.data);
   if (clear) Hydrate.data = {};
   return (

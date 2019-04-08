@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { hydrationDataScript } from "../super-intendent";
+import { hydrationScripts } from "../super-intendent";
 
 export default class NextScript extends Component {
   static DATA_GLOBAL = "__HYDRATION";
@@ -30,7 +30,7 @@ export default class NextScript extends Component {
       <>
         {/* this.logDocumentProps() */}
         {this.appendStyles()}
-        {hydrationDataScript({ clear: true })}
+        {hydrationScripts({ clear: true })}
       </>
     );
   }
