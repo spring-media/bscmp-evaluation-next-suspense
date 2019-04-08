@@ -1,15 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-export default class NextScript extends React.Component {
+export default class NextScript extends Component {
   static contextTypes = {
     _documentProps: PropTypes.any,
     _devOnlyInvalidateCacheQueryString: PropTypes.string
   };
 
   logDocumentProps() {
-    const documentProps = JSON.stringify(this.context._documentProps.styles);
-    const __html = `console.log(${documentProps})`;
+    const documentProps = JSON.stringify(this.context._documentProps);
+    const __html = `console.log("documentProps", ${documentProps})`;
     return <script dangerouslySetInnerHTML={{ __html }} />;
   }
 
@@ -25,7 +25,7 @@ export default class NextScript extends React.Component {
   render() {
     return (
       <>
-        {this.logDocumentProps()}
+        {/* this.logDocumentProps() */}
         {this.appendStyles()}
       </>
     );

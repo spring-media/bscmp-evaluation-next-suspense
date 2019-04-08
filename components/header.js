@@ -2,7 +2,7 @@ import HeroArticle from "./heroArticle";
 import Article from "./article";
 import DocumentProxyContext from "../context/documentProxy";
 
-export default function Header() {
+export default function Header({ heroSpan = "1 / 4" }) {
   return (
     <DocumentProxyContext.Consumer>
       {context => {
@@ -19,7 +19,7 @@ export default function Header() {
                 padding: 10px;
               }
             `}</style>
-            <HeroArticle span="1 / 4" />
+            <HeroArticle span={heroSpan} />
             <Article column={1} />
             <Article column={2} />
             <Article column={3} />
