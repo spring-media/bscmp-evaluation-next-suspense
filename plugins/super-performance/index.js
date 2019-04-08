@@ -6,7 +6,10 @@ module.exports = (nextConfig = {}, ...rest) => {
     webpack(webpackConfig, options) {
       webpackConfig.entry = webpackConfig.entry().then(val => {
         if (webpackConfig.name === "client") {
-          val["static/runtime/client.js"] = path.resolve(
+          // val["static/runtime/client.js"] = path.resolve(
+
+          // wow, can we actually overwrite the main.js ?????????????????????
+          val["static/runtime/main.js"] = path.resolve(
             __dirname,
             "..",
             "..",
@@ -14,6 +17,7 @@ module.exports = (nextConfig = {}, ...rest) => {
             "super-intendent",
             "runtime.js"
           );
+          console.log(JSON.stringify(val, null, 2));
         }
         return val;
       });

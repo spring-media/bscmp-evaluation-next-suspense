@@ -55,7 +55,7 @@ export default class PerformanceScript extends Component {
         {/* this.getScripts(this.context._documentProps.files) */}
         {this.getScripts([
           "static/runtime/webpack.js",
-          "static/runtime/client.js"
+          "static/runtime/main.js"
         ])}
 
         {hydrationScripts({ clear: true })}
