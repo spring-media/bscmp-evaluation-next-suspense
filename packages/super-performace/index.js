@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Hydrate } from "../super-intendent";
+import { hydrationDataScript } from "../super-intendent";
 
 export default class NextScript extends Component {
   static DATA_GLOBAL = "__HYDRATION";
@@ -25,18 +25,12 @@ export default class NextScript extends Component {
     ));
   }
 
-  appendHydrationData() {
-    const serializedData = JSON.stringify(Hydrate.data);
-    const __html = `var ${NextScript.DATA_GLOBAL} = ${serializedData}`;
-    return <script dangerouslySetInnerHTML={{ __html }} />;
-  }
-
   render() {
     return (
       <>
         {/* this.logDocumentProps() */}
         {this.appendStyles()}
-        {this.appendHydrationData()}
+        {hydrationDataScript({ clear: true })}
       </>
     );
   }

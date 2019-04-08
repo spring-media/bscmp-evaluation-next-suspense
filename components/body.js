@@ -3,9 +3,9 @@ import { Hydrate } from "../packages/super-intendent";
 
 export default function Header() {
   return (
-    <header>
+    <main>
       <style jsx>{`
-        header {
+        main {
           display: grid;
           grid-gap: 2%;
           grid-template-columns: 32% 32% 32%;
@@ -54,6 +54,6 @@ export default function Header() {
       <Article column={1} />
       <Article column={2} />
       <Article column={3} />
-    </header>
+    </main>
   );
 }
