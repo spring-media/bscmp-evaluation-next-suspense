@@ -1,6 +1,6 @@
 import { Hydrate } from ".";
 
-export default function hydrationData({ clear = false }) {
+export default function hydrationScripts({ clear = false }) {
   const __html = JSON.stringify(Hydrate.data);
   if (clear) Hydrate.data = {};
   return (

@@ -1,8 +1,10 @@
 import HeroArticle from "./heroArticle";
 import Article from "./article";
 import DocumentProxyContext from "../context/documentProxy";
+import loadRuntime from "../packages/super-intendent/loadRuntime";
 
 export default function Header({ heroSpan = "1 / 4" }) {
+  loadRuntime();
   return (
     <DocumentProxyContext.Consumer>
       {context => (

@@ -2,19 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { hydrationScripts } from "../super-intendent";
 
-export default class NextScript extends Component {
+export default class PerformanceScript extends Component {
   static DATA_GLOBAL = "__HYDRATION";
 
   static contextTypes = {
     _documentProps: PropTypes.any,
     _devOnlyInvalidateCacheQueryString: PropTypes.string
   };
-
-  logDocumentProps() {
-    const documentProps = JSON.stringify(this.context._documentProps);
-    const __html = `console.log("documentProps", ${documentProps})`;
-    return <script dangerouslySetInnerHTML={{ __html }} />;
-  }
 
   appendStyles() {
     return this.context._documentProps.styles.map(({ key, props }) => (
@@ -25,11 +19,17 @@ export default class NextScript extends Component {
     ));
   }
 
+  appendDev() {
+    return this.context._documentProps.devFiles.map((src, index) => (
+      <script key={index} src={src} />
+    ));
+  }
+
   render() {
     return (
       <>
-        {/* this.logDocumentProps() */}
         {this.appendStyles()}
+        {/* this.appendDev() */}
         {hydrationScripts({ clear: true })}
       </>
     );

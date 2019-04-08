@@ -1,6 +1,7 @@
 import { Lead } from "../packages/super-intendent";
 import Header from "../components/header";
 import Body from "../components/body";
+import loadRuntime from "../packages/super-intendent/loadRuntime";
 
 export default function Home() {
   return (
@@ -19,3 +20,9 @@ export default function Home() {
     </section>
   );
 }
+
+Home.getInitialProps = async function() {
+  await loadRuntime();
+  const asd = "asd";
+  return { asd };
+};
