@@ -44,19 +44,16 @@ export default class PerformanceScript extends Component {
     });
   }
 
-  getPerformanceScripts() {
-    return ["static/runtime/webpack.js", "static/runtime/client.js"];
-  }
-
   render() {
     return (
       <>
         {this.appendStyles()}
-        {/* this.getScripts(this.context._documentProps.files) */}
-        {this.getScripts([
+        {/*this.getScripts(this.context._documentProps.devFiles)}
+        {this.getScripts(this.context._documentProps.files) */}
+        {/* this.getScripts([
           "static/runtime/webpack.js",
           "static/runtime/main.js"
-        ])}
+        ]) */}
 
         {hydrationScripts({ clear: true })}
       </>
