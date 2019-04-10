@@ -1,5 +1,4 @@
 import Document, { Html, Main, NextScript } from "next/document";
-import PerformanceScript from "../packages/super-performace";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -12,9 +11,8 @@ export default class MyDocument extends Document {
       <Html>
         <body>
           <Main />
+          <HydrationData />
           <NextScript />
-          <PerformanceScript />
-          {/*  */}
         </body>
       </Html>
     );

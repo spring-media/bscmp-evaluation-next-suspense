@@ -1,10 +1,6 @@
-import { Lead } from "../packages/super-intendent";
 import Header from "../components/header";
-import dynamic from "next/dynamic";
 import Body from "../components/body";
-const LoadHydrationRuntime = dynamic(() =>
-  import("../packages/super-intendent/loadRuntime")
-);
+import { Lead, HydrationData } from "../packages/super-intendent";
 
 export default function Home() {
   return (
@@ -20,7 +16,7 @@ export default function Home() {
         <Header heroSpan="1 / 4" />
       </Lead>
       <Body />
-      <LoadHydrationRuntime />
+      <HydrationData />
     </section>
   );
 }

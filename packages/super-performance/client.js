@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Article from "../../components/article";
 
 if (typeof document !== undefined) {
-  console.log("runtime running");
+  console.debug("Hydration runtime running");
 
   const hydrateComponents = [Article];
 
@@ -23,12 +23,12 @@ if (typeof document !== undefined) {
       `script[type="application/hydration-marker"][id="${id}"]`
     );
     let container = marker;
-    data.reverse().forEach(({ name, props }) => {
-      const Element = componentMap[name];
-      container = container.previousElementSibling;
-      ReactDOM.hydrate(<Element {...props} />, container);
+    data.forEach(({ name, props }) => {
+      const Component = componentMap[name];
+      container = container.nextElementSibling;
+      ReactDOM.hydrate(<Component {...props} />, container);
     });
   });
 } else {
-  console.log("omitting runtime, running on the server");
+  console.debug("Omitting client runtime, running on the server");
 }

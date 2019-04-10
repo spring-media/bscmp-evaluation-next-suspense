@@ -1,5 +1,5 @@
 import Article from "./article";
-import { Hydrate } from "../packages/super-intendent";
+import Hydrate from "../packages/super-intendent/hydrate";
 
 export default function Header() {
   return (

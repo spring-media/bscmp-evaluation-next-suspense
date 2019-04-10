@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { hydrationScripts } from "../super-intendent";
+import { hydrationScripts } from "../packages/super-intendent";
 
 export default class PerformanceScript extends Component {
   static DATA_GLOBAL = "__HYDRATION";

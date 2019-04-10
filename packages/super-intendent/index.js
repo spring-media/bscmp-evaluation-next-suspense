@@ -1,4 +1,3 @@
-export { default as Lead } from "./lead";
 export { default as Hydrate } from "./hydrate";
-export { default as hydrationScripts } from "./hydrationScripts";
-export { default as loadRuntime } from "./loadRuntime";
+export { default as HydrationData } from "./hydrationData";
+export { default as Lead } from "./lead";

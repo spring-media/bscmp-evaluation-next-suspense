@@ -1,41 +1,41 @@
 import React, { Component } from "react";
 
 export default class Hydrate extends Component {
+  static nextId = 0;
   static data = {};
 
   static storeData(id, data) {
-    Hydrate.data[id] = data;
+    Hydrate.data[id.toString()] = data;
+  }
+
+  static getData() {
+    return Hydrate.data;
   }
 
   state = {
-    id: this.getId()
+    id: ++Hydrate.nextId
   };
 
-  getId() {
-    return Math.random()
-      .toString(36)
-      .substring(2, 15);
+  constructor(props) {
+    super(props);
+    Hydrate.storeData(this.state.id, this.getHydrationData());
   }
 
   getHydrationData() {
-    const children = Array.isArray(this.props.children)
-      ? this.props.children
-      : [this.props.children];
+    const children = React.Children.toArray(this.props.children);
     return children.map(child => this.getDataFromChild(child));
   }
 
-  getDataFromChild(child) {
-    const name = child.type.displayName || child.type.name;
-    const props = child.props;
+  getDataFromChild({ type, props }) {
+    const name = type.displayName || type.name;
     return { name, props };
   }
 
   render() {
-    Hydrate.storeData(this.state.id, this.getHydrationData());
     return (
       <>
-        {this.props.children}
         <script type="application/hydration-marker" id={this.state.id} />
+        {this.props.children}
       </>
     );
   }
