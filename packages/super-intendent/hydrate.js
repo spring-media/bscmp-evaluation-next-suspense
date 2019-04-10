@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 
 export default class Hydrate extends Component {
-  static nextId = 0;
   static data = {};
 
   static storeData(id, data) {
-    Hydrate.data[id.toString()] = data;
+    Hydrate.data[id] = data;
   }
 
   static getData() {
@@ -13,7 +12,9 @@ export default class Hydrate extends Component {
   }
 
   state = {
-    id: ++Hydrate.nextId
+    id: Math.random()
+      .toString(36)
+      .substring(2, 15) // quick and dirty dev id
   };
 
   constructor(props) {
@@ -34,7 +35,7 @@ export default class Hydrate extends Component {
   render() {
     return (
       <>
-        <script type="application/hydration-marker" id={this.state.id} />
+        <script type="application/hydration-marker" hid={this.state.id} />
         {this.props.children}
       </>
     );

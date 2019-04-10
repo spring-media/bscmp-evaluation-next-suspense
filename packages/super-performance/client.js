@@ -20,13 +20,20 @@ if (typeof document !== undefined) {
 
   Object.entries(hydrationData).forEach(([id, data]) => {
     const marker = document.querySelector(
-      `script[type="application/hydration-marker"][id="${id}"]`
+      `script[type="application/hydration-marker"][hid="${id}"]`
     );
     let container = marker;
-    data.forEach(({ name, props }) => {
-      const Component = componentMap[name];
+    const parent = marker.parentNode;
+
+    const elements = Array.from({ length: data.length }, () => {
       container = container.nextElementSibling;
-      ReactDOM.hydrate(<Component {...props} />, container);
+      return container;
+    });
+    console.log(elements);
+    data.forEach(({ name, props }, i) => {
+      const Component = componentMap[name];
+      const container = elements[i];
+      ReactDOM.render(<Component {...props} />, container);
     });
   });
 } else {

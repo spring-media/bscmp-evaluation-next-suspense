@@ -1,6 +1,6 @@
 import Hydrate from "./hydrate";
 
-export default function HydrationData({ clear = false }) {
+export default function HydrationData({ clear = true }) {
   return (
     <script
       type="application/hydration-data"
@@ -11,6 +11,9 @@ export default function HydrationData({ clear = false }) {
 
 function serializedHydrationData(clear) {
   const data = Hydrate.getData();
-  if (clear) Hydrate.data = {};
+  if (clear) {
+    Hydrate.data = {};
+    Hydrate.nextId = 0;
+  }
   return JSON.stringify(data);
 }
