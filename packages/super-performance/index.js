@@ -10,8 +10,8 @@ function modifyWebpackConfig(webpackConfig) {
     webpackConfig.entry = webpackConfig.entry().then(e => replaceMainJs(e));
     webpackConfig.resolve = webpackConfig.resolve || {};
     webpackConfig.resolve.alias = webpackConfig.resolve.alias || {};
-    webpackConfig.resolve.alias["react"] = "preact-compat";
-    webpackConfig.resolve.alias["react-dom"] = "preact-compat";
+    webpackConfig.resolve.alias["react"] = "preact/compat";
+    webpackConfig.resolve.alias["react-dom"] = "preact/compat";
   }
   return webpackConfig;
 }
