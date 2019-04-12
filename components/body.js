@@ -1,18 +1,5 @@
-import React, { Component } from "react";
 import Article, { ArticleAsClass } from "./article";
-import Hydrate from "../packages/super-intendent/hydrate";
-
-function useAsHydrationWrapper(WrappedComponent) {
-  return class extends Component {
-    render() {
-      return (
-        <Hydrate>
-          <WrappedComponent {...this.props} />
-        </Hydrate>
-      );
-    }
-  };
-}
+import useAsHydrationWrapper from "../packages/super-intendent/useAsHydrationWrapper";
 
 const HydratedArticle = useAsHydrationWrapper(Article);
 const HydratedArticleAsClass = useAsHydrationWrapper(ArticleAsClass);
