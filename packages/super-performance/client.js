@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Article from "../../components/article";
+import Article, { ArticleAsClass } from "../../components/article";
 
 if (typeof document !== undefined) {
-  console.debug("Hydration runtime running");
+  window.webpackHotUpdate = function() {};
 
-  const hydrateComponents = [Article];
+  console.log("%cHydration runtime running", "color: blue");
+
+  const hydrateComponents = [Article, ArticleAsClass];
 
   const componentMap = hydrateComponents.reduce((map, comp) => {
     const compName = comp.displayName || comp.name;
@@ -23,17 +25,21 @@ if (typeof document !== undefined) {
       `script[type="application/hydration-marker"][hid="${id}"]`
     );
     let container = marker;
-    const parent = marker.parentNode;
+    data = Array.isArray(data) ? data : [data];
 
     const elements = Array.from({ length: data.length }, () => {
       container = container.nextElementSibling;
       return container;
     });
-    console.log(elements);
+
     data.forEach(({ name, props }, i) => {
       const Component = componentMap[name];
       const container = elements[i];
-      ReactDOM.render(<Component {...props} />, container);
+      const isClass = Component.prototype instanceof React.Component;
+      const children = isClass
+        ? new Component(props).render().props.children
+        : Component(props).props.children;
+      ReactDOM.render(<>{children}</>, container);
     });
   });
 } else {

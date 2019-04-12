@@ -1,5 +1,21 @@
-import Article from "./article";
+import React, { Component } from "react";
+import Article, { ArticleAsClass } from "./article";
 import Hydrate from "../packages/super-intendent/hydrate";
+
+function useAsHydrationWrapper(WrappedComponent) {
+  return class extends Component {
+    render() {
+      return (
+        <Hydrate>
+          <WrappedComponent {...this.props} />
+        </Hydrate>
+      );
+    }
+  };
+}
+
+const HydratedArticle = useAsHydrationWrapper(Article);
+const HydratedArticleAsClass = useAsHydrationWrapper(ArticleAsClass);
 
 export default function Header() {
   return (
@@ -13,19 +29,10 @@ export default function Header() {
           padding: 10px;
         }
       `}</style>
-      <Hydrate>
-        <Article column={1} />
-        <Article column={2} />
-        <Article column={3} />
-      </Hydrate>
 
-      <Article column={1} />
-      <Article column={2} />
-      <Article column={3} />
-
-      <Article column={1} />
-      <Article column={2} />
-      <Article column={3} />
+      <HydratedArticleAsClass column={1} />
+      <HydratedArticle column={2} />
+      <HydratedArticle column={3} />
 
       <Article column={1} />
       <Article column={2} />

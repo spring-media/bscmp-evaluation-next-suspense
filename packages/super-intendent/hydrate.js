@@ -23,8 +23,15 @@ export default class Hydrate extends Component {
   }
 
   getHydrationData() {
-    const children = React.Children.toArray(this.props.children);
-    return children.map(child => this.getDataFromChild(child));
+    const { props } = this;
+    const rootIsFragment = props.children.type === React.Fragment;
+    const children = rootIsFragment
+      ? props.children.props.children
+      : props.children;
+    const childrenAsArr = React.Children.toArray(children);
+    const data = childrenAsArr.map(child => this.getDataFromChild(child));
+    return data;
+    //return { rootIsFragment, children: data };
   }
 
   getDataFromChild({ type, props }) {
