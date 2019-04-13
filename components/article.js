@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default function Article({ column = "1 / 1" }) {
+export default function Article({ column = "1" }) {
   return (
     <article onClick={() => console.log("clickedOnArticle")}>
       <style jsx>{`

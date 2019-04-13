@@ -17,6 +17,7 @@ function modifyWebpackConfig(webpackConfig) {
 }
 
 function replaceMainJs(entry) {
-  entry["static/runtime/main.js"] = path.resolve(__dirname, "client.js");
+  // entry["static/runtime/main.js"] = path.resolve(__dirname, "client.js");
+  entry["static/runtime/main.js"] = path.resolve(__dirname, "client.preact.js");
   return entry;
 }
