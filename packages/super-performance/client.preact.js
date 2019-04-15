@@ -59,7 +59,7 @@ export function render(vnode, parentDom, replaceNode) {
       : EMPTY_ARR.slice.call(parentDom.childNodes),
     mounts,
     vnode,
-    replaceNode
+    replaceNode || EMPTY_OBJ
   );
   commitRoot(mounts, vnode);
 }
