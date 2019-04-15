@@ -12,9 +12,9 @@ export default function Home() {
           margin: 0 auto;
         }
       `}</style>
-      <Lead>
+      {/* <Lead>
         <Header heroSpan="1 / 4" />
-      </Lead>
+      </Lead> */}
       <Body />
       <HydrationData />
     </section>

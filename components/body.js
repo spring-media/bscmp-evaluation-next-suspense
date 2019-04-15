@@ -4,7 +4,7 @@ import useAsHydrationWrapper from "../packages/super-intendent/useAsHydrationWra
 const HydratedArticle = useAsHydrationWrapper(Article);
 const HydratedArticleAsClass = useAsHydrationWrapper(ArticleAsClass);
 
-export default function Header() {
+export default function Body() {
   return (
     <main id="main-container">
       <style jsx>{`

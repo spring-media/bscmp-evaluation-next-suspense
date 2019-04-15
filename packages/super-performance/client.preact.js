@@ -14,15 +14,24 @@ const el1 = document.querySelector("#main-container > article:nth-child(1)");
 const el2 = document.querySelector("#main-container > article:nth-child(2)");
 const el3 = document.querySelector("#main-container > article:nth-child(3)");
 
-//render(<Article column={1} />, parent, el1);
-debugger;
-render(<Article column={2} />, parent, el2);
-debugger;
-//render(<Article column={3} />, parent, el3);
+const els = [el1, el2, el3];
 
-console.log(1, el1);
-console.log(2, el2);
-console.log(3, el3);
+/* if (typeof window !== "undefined") {
+  for (let i = 0; i < els.length; i++) {
+    window.setTimeout(() => {
+      console.log("rendering", els[i]);
+      render(<Article column={i + 1} />, parent, els[i]);
+    }, (i + 1) * 1000);
+  }
+} */
+
+render(<Article column={1} />, parent, el1);
+render(<Article column={2} />, parent, el2);
+render(<Article column={3} />, parent, el3);
+
+// console.log(1, el1);
+// console.log(2, el2);
+// console.log(3, el3);
 
 /**
  * Render a Preact virtual node into a DOM element
@@ -36,13 +45,18 @@ export function render(vnode, parentDom, oldDom) {
   vnode = createElement(Fragment, null, [vnode]);
 
   let mounts = [];
+  // debugger;
   diffChildren(
     parentDom,
-    (parentDom._prevVNode = vnode),
-    oldVNode,
+    oldDom ? vnode : (parentDom._prevVNode = vnode),
+    oldDom ? undefined : oldVNode,
     EMPTY_OBJ,
     parentDom.ownerSVGElement !== undefined,
-    oldVNode ? null : EMPTY_ARR.slice.call(parentDom.childNodes),
+    oldDom
+      ? [oldDom]
+      : oldVNode
+      ? null
+      : EMPTY_ARR.slice.call(parentDom.childNodes),
     mounts,
     vnode,
     oldDom
