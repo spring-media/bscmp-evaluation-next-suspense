@@ -39,7 +39,7 @@ render(<Article column={3} />, parent, el3);
  * @param {import('./internal').PreactElement} parentDom The DOM element to
  * render into
  */
-export function render(vnode, parentDom, oldDom) {
+export function render(vnode, parentDom, replaceNode) {
   if (options.root) options.root(vnode, parentDom);
   let oldVNode = parentDom._prevVNode;
   vnode = createElement(Fragment, null, [vnode]);
@@ -48,18 +48,18 @@ export function render(vnode, parentDom, oldDom) {
   // debugger;
   diffChildren(
     parentDom,
-    oldDom ? vnode : (parentDom._prevVNode = vnode),
-    oldDom ? undefined : oldVNode,
+    replaceNode ? vnode : (parentDom._prevVNode = vnode),
+    replaceNode ? undefined : oldVNode,
     EMPTY_OBJ,
     parentDom.ownerSVGElement !== undefined,
-    oldDom
-      ? [oldDom]
+    replaceNode
+      ? [replaceNode]
       : oldVNode
       ? null
       : EMPTY_ARR.slice.call(parentDom.childNodes),
     mounts,
     vnode,
-    oldDom
+    replaceNode
   );
   commitRoot(mounts, vnode);
 }
