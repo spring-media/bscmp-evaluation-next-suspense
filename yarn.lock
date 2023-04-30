@@ -3271,12 +3271,10 @@ posix-character-classes@^0.1.0:
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-preact@10.0.0-alpha.4:
-  version "10.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.0.0-alpha.4.tgz#c0cf81771fa7aaa3e71adf8741b1e341e2cc4bd1"
-  integrity sha512-HD8ocvxID8NjC6m0rZhY1HbbBIHBKw7E4/0nu/zulPcGhgXEjm2BD9Tt8wQdoa/nea3APJ72TxRJSg2oQmU3uA==
-  dependencies:
-    prop-types "^15.6.2"
+preact@10.0.0-beta.1:
+  version "10.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.0.0-beta.1.tgz#f7d524668db72ed74e99d447f09600fa4db0b186"
+  integrity sha512-1uhj3JXOEzEPUof5t/iQW5heEvTOpexwS0FLAjJQfgfT8OCXICyzI2TwkYyFJ+W9q9GsDmhZgFagH2G0akFveQ==
 
 private@^0.1.6:
   version "0.1.8"
